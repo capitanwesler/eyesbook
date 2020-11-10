@@ -1,0 +1,57 @@
+/* This is the main CSS for the application */
+
+body {
+    font-family: sans-serif;
+}
+
+/* general styling */
+
+.link {
+    text-decoration: none;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* index.html */
+
+
+#title-container {
+    display: flex;
+    width: 500px;
+    text-align: center;
+    flex-direction: column;
+    margin: 300px auto;
+}
+
+/* end of index.html */
+
+
+/* singup.html */
+
+#main-container-singup {
+    text-align: center;
+    margin: 200px 0;
+}
+
+#singUpForm {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.formSeparator {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/* end of singup.html */

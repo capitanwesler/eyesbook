@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>singup</title>
+        <title>eyesbook - singUp</title>
+        <meta name="description" content="A copy of facebook" />
+        <link rel="stylesheet" href="./../public/app.css" />
         <script src="./../public/app.js"></script>
     </head>
     <body>
-        <h1>Sing up</h1>
-        <form id="singUp" action="api/user" method="POST">
-            <input type="text" name="firstName" />
-            <input type="text" name="lastName" />
-            <input type="submit" />
-        </form>
+        <main id="main-container-singup">
+            <h1>Sing Up</h1>
+            <form id="singUpForm" action="api/user" method="POST">
+                <div class="formSeparator">
+                    <label for="firstName">First Name: </label>
+                    <input type="text" name="firstName" placeholder="Enter your first name" required/>
+                </div>
+
+                <div class="formSeparator">
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" name="lastName" placeholder="Enter your last name" required/>  
+                </div>
+            
+                <div class="formSeparator">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" placeholder="**********" required/>
+                </div>
+                
+                <div class="formSeparator">
+                    <input type="submit" value="SingUp"/>
+                </div>
+            </form>
+            <a class="link" href="/">Go Home</a>
+        </main>
     </body>
 </html>

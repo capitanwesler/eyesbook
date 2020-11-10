@@ -39,18 +39,13 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
     // Form the http request as a JSON type
     var xhr = new XMLHttpRequest();
     xhr.open(method, requestUrl, true);
-    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.setRequestHeader('Content-type', 'application/json');
 
     // For each header sent, add it to the request
     for(var headerKey in headers){
         if(headers.hasOwnProperty(headerKey)){
             xhr.setRequestHeader(headerKey, headers[headerKey]);
         }
-    }
-
-    // If there is a current session token set, add that as a header
-    if(app.config.sessionToken){
-        xhr.setRequestHeader("token", app.config.sessionToken.id);
     }
 
     // When the request comes back, handle the response
@@ -61,13 +56,12 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
 
             // Callback if requested
             if(callback){
-            try{
-                var parsedResponse = JSON.parse(responseReturned);
-                callback(statusCode,parsedResponse);
-            } catch(e){
-                callback(statusCode,false);
-            }
-
+                try{
+                    var parsedResponse = JSON.parse(responseReturned);
+                    callback(statusCode, parsedResponse);
+                } catch(e){
+                    callback(statusCode, false);
+                }
             }
         }
     }
@@ -83,9 +77,38 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
 app.bindSingUp = function() {
     
     //We start to selectin the form with for the signUp
-    let singUpForm = document.querySelector("#singUp");
+    let singUpForm = document.querySelector('#singUpForm');
 
-    console.log(singUpForm);
+    // Adding the event listener
+    singUpForm.addEventListener('submit', app.singUp);
+};
+
+// Doing the singUp logic for the form
+
+app.singUp = function(e) {
+    //We prevent the form from submiting
+    e.preventDefault();
+
+    let elements = this.elements; // this is to getting all the elements on the form
+
+    //Now i'm going to iterate over each element in the form
+    // and format my payload to send the request
+    let newPayload = {};
+    for (element of elements) {
+        if (element.name === 'firstName' || element.name === 'lastName' || element.name === 'password') {
+            newPayload[element.name] = element.value;
+        }
+    }
+
+    //Just checking
+    console.log(newPayload);
+
+    //Making the request with the interface
+    app.client.request(undefined, this.action, this.method.toUpperCase(), undefined, newPayload, (statusCode, payloadResponse) => {
+        //Just to check if the response is all good
+        console.log(statusCode, payloadResponse);
+    });
+    
 };
 
 
