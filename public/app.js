@@ -78,6 +78,7 @@ app.bindSingUp = function() {
     //We start to selectin the form with for the signUp
     let singUpForm = document.querySelector('#singUpForm');
 
+
     // Adding the event listener
     singUpForm.addEventListener('submit', app.singUp);
 };
@@ -146,11 +147,42 @@ app.singUp = function(e) {
 };
 
 
+// We need to bind the log in form
+app.bindLogIn = function() {
+    
+    //We start to selectin the form with for the signUp
+    let logInForm = document.querySelector('#logInForm');
+
+    //Now we add the event listener for the submit event
+    logInForm.addEventListener('submit', app.logIn);
+};
+
+// Now we do all the logic, inside the function of the submit listener
+app.logIn = function(e) {
+    //We first need to prevent the default from the form
+    e.preventDefault();
+
+    console.log(this);
+};
+
+
 //Init the app client-side
 app.init = function() {
-    
-    //Bind the singUp form
-    app.bindSingUp();
+
+    //This is just, to see what to execute, when the page loads
+    // depending on the pathname
+    if (window.location.pathname === '/login') {
+        //Bind the logIn form
+        app.bindLogIn();
+    }
+
+    //This is just, to see what to execute, when the page loads
+    // depending on the pathname
+    if (window.location.pathname === '/singup') {
+        //Bind the singUp form
+        app.bindSingUp();
+    }
+
 };
 
 window.onload = function() {

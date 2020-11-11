@@ -100,3 +100,32 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 
 /* end of singup.html */
+
+/* login.html */
+
+#title-login {
+    font-size: 60px;
+    text-shadow: 3px 1px black;
+    word-spacing: 10px;
+}
+
+#main-container-login {
+    text-align: center;
+    margin-top: 135px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+#logInForm {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+
+/* end of login.html */
