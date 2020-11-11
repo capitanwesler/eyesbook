@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eyesbook - logIn</title>
+        <meta name="description" content="A copy of facebook" />
+        <link rel="stylesheet" href="./../public/app.css" />
+        <script src="./../public/app.js"></script>
+    </head>
+    <body>
+        <main id="main-container-login">
+            <h1 id="title-login">Log In</h1>
+            <div class="error-handling non-displayed">
+                <span id="password-equal" class="non-displayed">The password doesn't match, try again</span>
+            </div>
+            <form id="logInForm" action="api/user" method="GET">
+                <div class="formSeparator">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" placeholder="Enter your email" required/>
+                </div>
+                <div class="formSeparator">
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" placeholder="**********" required/>
+                </div>
+                <div class="formSeparator">
+                    <input class="btn-form" type="submit" value="Log In"/>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
