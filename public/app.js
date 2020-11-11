@@ -130,7 +130,7 @@ app.singUp = function(e) {
         // After we send the request, we redirect to main page
         // @TODO: create a token, if the user try to singUp again,
         // we need to check if the user is already loggedIn
-        window.location.href = "/";
+        //window.location.href = "/";
     }else {
         // We need to grab the div with the class .error-handling
         let errorDiv = document.querySelector('.error-handling');
