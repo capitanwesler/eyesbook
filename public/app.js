@@ -69,7 +69,6 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
     // Send the payload as JSON
     var payloadString = JSON.stringify(payload);
     xhr.send(payloadString);
-
 };
 
 // Bind the singUp form
@@ -94,21 +93,56 @@ app.singUp = function(e) {
     //Now i'm going to iterate over each element in the form
     // and format my payload to send the request
     let newPayload = {};
+
+    // This is for saving the confirmPassword to a variable
+    let confirmPassword = '';
+
     for (element of elements) {
-        if (element.name === 'firstName' || element.name === 'lastName' || element.name === 'password') {
+        if (element.name === 'firstName' || element.name === 'lastName' || element.name === 'password'
+            || element.name === 'email') {
             newPayload[element.name] = element.value;
+        }
+
+        if (element.name === 'confirmPassword') {
+            confirmPassword = element.value;
         }
     }
 
     //Just checking
     console.log(newPayload);
 
-    //Making the request with the interface
-    app.client.request(undefined, this.action, this.method.toUpperCase(), undefined, newPayload, (statusCode, payloadResponse) => {
-        //Just to check if the response is all good
-        console.log(statusCode, payloadResponse);
-    });
-    
+    // If the two password's match, then we do the request, else
+    // we show the error
+    if (newPayload.password === confirmPassword) {
+
+        //We need to check if the errorDiv have or no the non-displayed class
+        if (!document.querySelector('.error-handling').classList.contains('non-displayed')) {
+            document.querySelector('.error-handling').classList.add('non-displayed');
+        }
+
+
+        //Making the request with the interface
+        app.client.request(undefined, this.action, this.method.toUpperCase(), undefined, newPayload, (statusCode, payloadResponse) => {
+            //Just to check if the response is all good
+            console.log(statusCode, payloadResponse);
+        });
+
+        // After we send the request, we redirect to main page
+        // @TODO: create a token, if the user try to singUp again,
+        // we need to check if the user is already loggedIn
+        window.location.href = "/";
+    }else {
+        // We need to grab the div with the class .error-handling
+        let errorDiv = document.querySelector('.error-handling');
+
+        //Next remove the non-displayed class
+        errorDiv.classList.remove('non-displayed');
+
+        //Now in the span with the id #password-equal
+        //we need to display it
+        errorDiv.querySelector('#password-equal').classList.remove('non-displayed');
+
+    }
 };
 
 

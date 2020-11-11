@@ -12,7 +12,23 @@ body {
     background-color: black;
     color: white;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
+}
+
+.error-handling {
+    padding: 10px;
+}
+
+.displayed-block {
+    display: block;
+}
+
+.displayed-inline {
+    display: inline;
+}
+
+.non-displayed {
+    display: none;
 }
 
 /* index.html */
@@ -33,18 +49,47 @@ body {
 
 #main-container-singup {
     text-align: center;
-    margin: 200px 0;
+    margin-top: 135px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35vw;
+}
+
+#title-singup {
+    font-size: 60px;
+    text-shadow: 3px 1px black;
+    word-spacing: 10px;
 }
 
 #singUpForm {
     display: flex;
     flex-direction: column;
-    width: 400px;
     padding: 15px;
     border: 1px solid black;
     border-radius: 6px;
     margin: 20px auto;
     text-align: left;
+}
+
+
+input[type="text"], input[type="password"], input[type="email"] {
+    margin-top: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgb(197, 200, 204);
+    border-radius: 6px;
+}
+
+.btn-form {
+    width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    margin: 0 auto;
 }
 
 .formSeparator {

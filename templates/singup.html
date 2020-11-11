@@ -8,8 +8,15 @@
     </head>
     <body>
         <main id="main-container-singup">
-            <h1>Sing Up</h1>
+            <h1 id="title-singup">Sing Up</h1>
+            <div class="error-handling non-displayed">
+                <span id="password-equal" class="non-displayed">The password doesn't match, try again</span>
+            </div>
             <form id="singUpForm" action="api/user" method="POST">
+                <div class="formSeparator">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" placeholder="Enter your email" required/>
+                </div>
                 <div class="formSeparator">
                     <label for="firstName">First Name: </label>
                     <input type="text" name="firstName" placeholder="Enter your first name" required/>
@@ -22,14 +29,22 @@
             
                 <div class="formSeparator">
                     <label for="password">Password: </label>
-                    <input type="password" name="password" placeholder="**********" required/>
+                    <input type="password" name="password" placeholder="**********" required />
+                </div>
+
+                <div class="formSeparator">
+                    <label for="confirmPassword">Confirm Password: </label>
+                    <input type="password" name="confirmPassword" placeholder="**********" required />
                 </div>
                 
                 <div class="formSeparator">
-                    <input type="submit" value="SingUp"/>
+                    <input class="btn-form" type="submit" value="SingUp"/>
                 </div>
             </form>
-            <a class="link" href="/">Go Home</a>
+            <hr />
+            <div style="margin-top: 30px;">
+                <a class="link" href="/">Go Home</a>
+            </div>
         </main>
     </body>
 </html>
