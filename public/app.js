@@ -29,7 +29,7 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
             counter++;
             // If at least one query string parameter has already been added, preprend new ones with an ampersand
             if(counter > 1){
-            requestUrl+='&';
+            requestUrl += '&';
             }
             // Add the key and value
             requestUrl += queryKey + '=' + queryStringObject[queryKey];
@@ -162,7 +162,25 @@ app.logIn = function(e) {
     //We first need to prevent the default from the form
     e.preventDefault();
 
-    console.log(this);
+    //We grab all the elements in the form
+    let elements = this.elements;
+
+    //We are going to iterate over this elements, and form a newPayload
+    let queryStringObject = {};
+
+    for (element of elements) {
+        //Here i'm just grabing the element with the name of email or password
+        if (element.name === 'email' || element.name === 'password') {
+            queryStringObject[element.name] = element.value;
+        }
+    }
+
+    //Now we create the request
+    app.client.request(undefined, this.action, this.method.toUpperCase(), queryStringObject, undefined);
+
+
+
+
 };
 
 
